@@ -1,5 +1,6 @@
-import { type SchemaTypeDefinition } from 'sanity'
+import {personType} from './personType'
+import {eventType} from './eventType'
+import {homepageType} from './homepageType'
 
-export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [],
-}
+export const schemaTypes = [personType, eventType, homepageType]
+
