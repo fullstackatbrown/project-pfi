@@ -29,6 +29,12 @@ export const personType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'order',
+      type: 'number',
+      description: 'Display order within the page (lower numbers appear first)',
+      validation: (rule) => rule.integer().min(0),
+    }),
+    defineField({
       name: 'role',
       type: 'string',
       description: 'e.g. Founder, Curriculum Lead',

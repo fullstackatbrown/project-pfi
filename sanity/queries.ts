@@ -1,7 +1,8 @@
 export const peopleByGroupQuery = `
-  *[_type == "person" && group == $group] | order(name asc) {
+  *[_type == "person" && group == $group] | order(order asc, name asc) {
     _id,
     name,
+    order,
     role,
     year,
     bio,
