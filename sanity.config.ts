@@ -19,6 +19,17 @@ export default defineConfig({
   dataset,
   // Add and edit the content schema in the './sanity/schemaTypes' folder
   schema,
+  document: {
+    // Keep the homepage a singleton: no "Create new" option, no duplicate/delete
+    newDocumentOptions: (prev, {creationContext}) =>
+      creationContext.type === 'global'
+        ? prev.filter((item) => item.templateId !== 'homepage')
+        : prev,
+    actions: (prev, {schemaType}) =>
+      schemaType === 'homepage'
+        ? prev.filter(({action}) => action && ['publish', 'discardChanges', 'restore'].includes(action))
+        : prev,
+  },
   plugins: [
     structureTool({structure}),
     // Vision is for querying with GROQ from inside the Studio
