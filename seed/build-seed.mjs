@@ -1,9 +1,9 @@
 import { writeFileSync } from "node:fs";
 
-// change this once we know the real schemas
-const TYPES = { person: "teamMember", partner: "partner" };
+// Must match the document types in sanity/schemaTypes
+const TYPES = { person: "person", partner: "partner" };
 const F = {
-  person: { name: "name", role: "role", bio: "bio" },
+  person: { name: "name", group: "group", role: "role", bio: "bio" },
   partner: { name: "name", address: "address", description: "description" },
 };
 
@@ -12,12 +12,13 @@ const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)
 const people = [
   {
     name: "Raymond Hu",
+    group: "member",
     role: "Founder",
     bio: "Hi, my name is Raymond, and I'm a junior at Brown University originally from Florida. I'm the founder of the Personal Finance Initiative, which I started after a phone call with an adult who asked me how to budget for healthy food. That conversation showed me how important financial education is and inspired me to help young people build the skills and confidence to manage money from their very first paycheck. I'm passionate about financial literacy because it affects nearly every aspect of our lives, from the food we eat to the opportunities we pursue. Outside of school and my work with the initiative, I love cooking, exploring new recipes, and hiking outdoors!",
   },
-  { name: "Anthony Larios" },
-  { name: "Julia Chun" },
-  { name: "Ayaan Popatiya" },
+  { name: "Anthony Larios", group: "member" },
+  { name: "Julia Chun", group: "member" },
+  { name: "Ayaan Popatiya", group: "member" },
 ];
 
 const partners = [

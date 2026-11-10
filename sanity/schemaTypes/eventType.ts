@@ -3,25 +3,40 @@ import {defineField, defineType} from 'sanity'
 export const eventType = defineType({
   name: 'event',
   title: 'Event',
-  type: 'object',
+  type: 'document',
   fields: [
     defineField({
       name: 'eventName',
-      type: 'text',
+      title: 'Event name',
+      type: 'string',
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'eventDate',
+      title: 'Event date',
       type: 'date',
-      initialValue: () => new Date().toISOString(),
+      // date fields store YYYY-MM-DD, not a full ISO timestamp
+      initialValue: () => new Date().toISOString().slice(0, 10),
       validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'eventDescription',
+      title: 'Event description',
       type: 'text',
     }),
-        defineField({
+    defineField({
       name: 'topic',
-      type: 'text',
+      type: 'string',
     }),
   ],
+  orderings: [
+    {
+      title: 'Event date, newest first',
+      name: 'eventDateDesc',
+      by: [{field: 'eventDate', direction: 'desc'}],
+    },
+  ],
+  preview: {
+    select: {title: 'eventName', subtitle: 'eventDate'},
+  },
 })
