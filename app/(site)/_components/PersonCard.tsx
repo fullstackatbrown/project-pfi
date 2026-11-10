@@ -41,6 +41,11 @@ export function PersonCard({person}: {person: Person}) {
             {[person.role, person.year].filter(Boolean).join(" · ")}
           </p>
         )}
+        {person.email && (
+          <a className="person-card__email" href={`mailto:${person.email}`}>
+            {person.email}
+          </a>
+        )}
         {person.bio && <p className="person-card__bio">{person.bio}</p>}
       </div>
     </article>

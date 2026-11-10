@@ -10,6 +10,7 @@ export type Person = {
   year?: string;
   bio?: string;
   image?: SanityImage;
+  email?: string;
 };
 
 export type Event = {

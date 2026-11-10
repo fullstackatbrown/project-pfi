@@ -5,7 +5,8 @@ export const peopleByGroupQuery = `
     role,
     year,
     bio,
-    image { asset, alt }
+    image { asset, alt },
+    email,
   }
 `;
 
