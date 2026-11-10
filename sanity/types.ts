@@ -6,10 +6,12 @@ export type SanityImage = {
 export type Person = {
   _id: string;
   name: string;
+  order?: number;
   role?: string;
   year?: string;
   bio?: string;
   image?: SanityImage;
+  email?: string;
 };
 
 export type Event = {
